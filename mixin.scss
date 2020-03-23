@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+//clear
+@mixin clear{
+    &:after {
+        display: block;
+        clear: both;
+        content: '';
+    }
+}
+//vender prefix
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+}
+
+@mixin ellipsis($lines: 1) {
+    @if ($lines == 1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin centerTransform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content};
+    &:-moz-placeholder {@content};
+    &::-moz-placeholder {@content};
+    &:-ms-input-placeholder {@content};
+}
+
+/* pc sprite image */
+@mixin sprite($x:0, $y:0) {
+    background-image: url('../img/sp_techconcert.png');
+    background-repeat: no-repeat;
+    background-position: $x $y;
+    background-size: 534px 602px;
+    -webkit-background-size: 534px 602px;
+}
+
+/* mobile sprite image */
+@mixin sprite_mo($x:0, $y:0) {
+    background-image: url('../img/sp_techconcert_mo.png');
+    background-repeat: no-repeat;
+    background-position: $x $y;
+    background-size: 345px 339px;
+    -webkit-background-size: 345px 339px;
+}
+
+@mixin font_b{
+    font-family:NanumSquareB,'맑은 고딕',MalgunGothic,'돋움', Dotum,AppleSDGothicNeo,Helvetica,sans-serif;
+}
+
+@mixin font_eb{
+    font-family:NanumSquareEB,'맑은 고딕',MalgunGothic,'돋움', Dotum,AppleSDGothicNeo,Helvetica,sans-serif;
+}
