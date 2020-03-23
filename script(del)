@@ -1,0 +1,51 @@
+<!-- [D]인클루드를 위한 코드입니다. 개발시 삭제해주세요. -->
+
+  <script>
+  $(function(){
+    $('.menu_box').click(function(){
+      $('.menu_box').toggleClass('on');
+    });
+  });
+
+  $(function(){
+    $('.list_item, .h_nav_item, .info_item, .alarm_item, .h_menu_list').click(function(){
+      $('.list_item, .h_nav_item, .info_item,  .h_menu_list').removeClass('on');
+      $(this).toggleClass('on');
+      // $(this).parents('ul').toggleClass("on");
+    });
+  });
+
+
+  $(function(){
+    $('.news').click(function(){
+      $(this).parents('div').toggleClass("news");
+      if($(this).parents('div').hasClass("news")==true) {
+        $('.alarm_area').removeClass('collection, .following');
+      }
+    });
+  });
+
+  $(function(){
+    $('.collection').click(function(){
+      $(this).parents('div').toggleClass("collection");
+      if($(this).parents('div').hasClass("news")==true) {
+        $('.alarm_area').removeClass('news, .following');
+      }
+    });
+  });
+
+  $(function(){
+    $('.following').click(function(){
+      $(this).parents('div').toggleClass("following");
+      if($(this).parents('div').hasClass("news")==true) {
+        $('.alarm_area').removeClass('collection, .news');
+      }
+    });
+  });
+
+  $(function(){
+    $('.h_menu_list:last-child').click(function(){
+      $('.snb').css('display','block');
+    });
+  });
+  </script>
